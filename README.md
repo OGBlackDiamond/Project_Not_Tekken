@@ -37,5 +37,5 @@ stuff about ant goes here
 ##### Sungjoon - Tirpitz:
 stuff about Yoon goes here
 
-#### Maricella - xinoiii:
-stuff about maricella goes here
+#### Mari - xinoiii:
+stuff about mari goes here
