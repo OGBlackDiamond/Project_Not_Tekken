@@ -38,6 +38,54 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Bottom
+    uniqueID: 312903477
+    locked: 0
+  - name: BGTerrain
+    uniqueID: 1474604999
+    locked: 0
+  - name: BGDecals
+    uniqueID: 3303130037
+    locked: 0
+  - name: BGParticles
+    uniqueID: 4233161961
+    locked: 0
+  - name: SolidsBelow
+    uniqueID: 2255485931
+    locked: 0
+  - name: Below
+    uniqueID: 1014533507
+    locked: 0
+  - name: NPCs
+    uniqueID: 2686903087
+    locked: 0
+  - name: Enemies
+    uniqueID: 1634962449
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2462481087
+    locked: 0
+  - name: Pickups
+    uniqueID: 489189113
+    locked: 0
+  - name: Particles
+    uniqueID: 3065877781
+    locked: 0
+  - name: Solids
+    uniqueID: 1856341423
+    locked: 0
+  - name: FGTerrain
+    uniqueID: 1910190657
+    locked: 0
+  - name: FGDecals
+    uniqueID: 1816461975
+    locked: 0
+  - name: FGParticles
+    uniqueID: 98622807
+    locked: 0
+  - name: Top
+    uniqueID: 1391631943
     locked: 0
