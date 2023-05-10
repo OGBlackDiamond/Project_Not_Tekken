@@ -8,26 +8,31 @@ public class WASD_Move : MonoBehaviour
 {
     //[SerializeField] InputActionAsset actionAsset;
 
-    private float playerSpeed = 0.001F;
+    private float playerSpeed = 0.01F;
     private float velocityX = 0F; 
     private float velocityY = 0F;
 
+    private float xAxis;
+    private float yAxis;
+
+    private void Update()
+    {
+        yAxis = Input.GetAxisRaw("Vertical");
+        xAxis = Input.GetAxisRaw("Horizontal");
+    }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         slipperyMovement();
     }
 
     private void slipperyMovement()
     {
-        if (Input.GetKey(KeyCode.W))
+        
+        if (yAxis != 0) 
         {
-            velocityY += playerSpeed;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            velocityY -= playerSpeed;
+            velocityY += yAxis * playerSpeed;
         }
         else
         {
@@ -40,13 +45,9 @@ public class WASD_Move : MonoBehaviour
                 velocityY -= 0.0005F;
             }
         }
-        if (Input.GetKey(KeyCode.A))
+        if (xAxis != 0)
         {
-            velocityX -= playerSpeed;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            velocityX += playerSpeed;
+            velocityX += xAxis * playerSpeed;
         }
         else
         {
