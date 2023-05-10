@@ -1,36 +1,66 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class WASD_Move : MonoBehaviour
 {
+    //[SerializeField] InputActionAsset actionAsset;
 
-    private float playerSpeed = 0.1F;
+    private float playerSpeed = 0.001F;
+    private float velocityX = 0F; 
+    private float velocityY = 0F;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        slipperyMovement();
+    }
+
+    private void slipperyMovement()
+    {
         if (Input.GetKey(KeyCode.W))
         {
-            gameObject.transform.position = new Vector3(transform.position.x, transform.position.y + playerSpeed);
+            velocityY += playerSpeed;
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.S))
         {
-            gameObject.transform.position = new Vector3(transform.position.x - playerSpeed, transform.position.y);
+            velocityY -= playerSpeed;
         }
-        else if (Input.GetKey(KeyCode.S)) 
+        else
         {
-            gameObject.transform.position = new Vector3(transform.position.x, transform.position.y - playerSpeed);
+            if (velocityY < 0)
+            {
+                velocityY += 0.0005F;
+            }
+            if (velocityY > 0)
+            {
+                velocityY -= 0.0005F;
+            }
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            velocityX -= playerSpeed;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            gameObject.transform.position = new Vector3(transform.position.x + playerSpeed, transform.position.y);
+            velocityX += playerSpeed;
         }
+        else
+        {
+            if (velocityX < 0)
+            {
+                velocityX += 0.0005F;
+            }
+            if (velocityX > 0)
+            {
+                velocityX -= 0.0005F;
+            }
+        }
+
+        gameObject.transform.position = new Vector3(transform.position.x + velocityX, transform.position.y + velocityY);
+
     }
 }
