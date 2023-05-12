@@ -37,7 +37,7 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""jump"",
+                    ""name"": ""roll"",
                     ""type"": ""Button"",
                     ""id"": ""ec6312b9-002e-4b64-b08f-358e8a017ce2"",
                     ""expectedControlType"": ""Button"",
@@ -117,10 +117,10 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""b7013876-ff44-4e0f-99d7-bad191aaa34f"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""jump"",
+                    ""action"": ""roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -132,7 +132,7 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
         // gameplay
         m_gameplay = asset.FindActionMap("gameplay", throwIfNotFound: true);
         m_gameplay_move = m_gameplay.FindAction("move", throwIfNotFound: true);
-        m_gameplay_jump = m_gameplay.FindAction("jump", throwIfNotFound: true);
+        m_gameplay_roll = m_gameplay.FindAction("roll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -195,13 +195,13 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_gameplay_move;
-    private readonly InputAction m_gameplay_jump;
+    private readonly InputAction m_gameplay_roll;
     public struct GameplayActions
     {
         private @_3DControls m_Wrapper;
         public GameplayActions(@_3DControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @move => m_Wrapper.m_gameplay_move;
-        public InputAction @jump => m_Wrapper.m_gameplay_jump;
+        public InputAction @roll => m_Wrapper.m_gameplay_roll;
         public InputActionMap Get() { return m_Wrapper.m_gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -214,9 +214,9 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
             @move.started += instance.OnMove;
             @move.performed += instance.OnMove;
             @move.canceled += instance.OnMove;
-            @jump.started += instance.OnJump;
-            @jump.performed += instance.OnJump;
-            @jump.canceled += instance.OnJump;
+            @roll.started += instance.OnRoll;
+            @roll.performed += instance.OnRoll;
+            @roll.canceled += instance.OnRoll;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -224,9 +224,9 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
             @move.started -= instance.OnMove;
             @move.performed -= instance.OnMove;
             @move.canceled -= instance.OnMove;
-            @jump.started -= instance.OnJump;
-            @jump.performed -= instance.OnJump;
-            @jump.canceled -= instance.OnJump;
+            @roll.started -= instance.OnRoll;
+            @roll.performed -= instance.OnRoll;
+            @roll.canceled -= instance.OnRoll;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -247,6 +247,6 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnRoll(InputAction.CallbackContext context);
     }
 }

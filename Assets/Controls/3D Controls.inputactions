@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "jump",
+                    "name": "roll",
                     "type": "Button",
                     "id": "ec6312b9-002e-4b64-b08f-358e8a017ce2",
                     "expectedControlType": "Button",
@@ -95,10 +95,10 @@
                     "name": "",
                     "id": "b7013876-ff44-4e0f-99d7-bad191aaa34f",
                     "path": "<Keyboard>/space",
-                    "interactions": "Tap",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "jump",
+                    "action": "roll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

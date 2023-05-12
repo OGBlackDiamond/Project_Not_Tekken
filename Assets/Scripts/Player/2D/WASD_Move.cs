@@ -5,15 +5,18 @@ using static UnityEngine.Rendering.DebugUI;
 public class WASD_Move : MonoBehaviour
 {
     // reduction value to hinder the player's movement
-    private float playerSpeedReduction = 0.1F;
+    [SerializeField] private float playerSpeed, rollPlayerSpeed, rollSeconds;
+    [SerializeField] private InputActionReference movement, roll, slide;
 
     private Vector2 movementInput;
+
+    private bool rolling;
 
     /*
      * An action reference is created using a feild, it is used to 
      * reference the specific action, more can be added as needed
     */
-    [SerializeField] private InputActionReference movement, roll;
+
 
     // runs when the object is instantiated and becomes active
     private void OnEnable()
@@ -43,15 +46,23 @@ public class WASD_Move : MonoBehaviour
 
     private void regularMovement(float xValue, float yValue)
     {
-        gameObject.transform.position = new Vector3(
-            transform.position.x + (xValue * playerSpeedReduction), 
-            transform.position.y + (yValue * playerSpeedReduction)
-            );
+        var speed = rolling ? rollPlayerSpeed : playerSpeed;
+
+        var moveDir = new Vector3(xValue, yValue);
+
+        moveDir *= speed;
+
+        transform.position += moveDir;
     }
 
     private void Roll(InputAction.CallbackContext obj)
     {
-      // roll code goes here
+        rolling = true;
+        Invoke("stopRoll", rollSeconds);
     }
 
+    private void stopRoll()
+    {
+        rolling = false;
+    }
 }
