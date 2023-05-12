@@ -1,96 +1,57 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class WASD_Move : MonoBehaviour
 {
-    //[SerializeField] InputActionAsset actionAsset;
+    // reduction value to hinder the player's movement
+    private float playerSpeedReduction = 0.1F;
 
-    private float playerSpeed = 0.01F;
-    private float playerSpeedNormal = 1F;
-    private float velocityX = 0F; 
-    private float velocityY = 0F;
+    private Vector2 movementInput;
 
-    private float xAxis;
-    private float yAxis;
+    /*
+     * An action reference is created using a feild, it is used to 
+     * reference the specific action, more can be added as needed
+    */
+    [SerializeField] private InputActionReference movement, roll;
 
-    private int time = 0;
-    private int initialTime = 0;
+    // runs when the object is instantiated and becomes active
+    private void OnEnable()
+    {
+        // adds a method call to the action when the button is pressed (performed)
+        roll.action.performed += Roll;
+    }
+
+    // reverse of enable lawl
+    private void OnDisable()
+    {
+        // reverse of enable lawl
+        roll.action.performed -= Roll;
+    }
 
     private void Update()
     {
-        yAxis = Input.GetAxisRaw("Vertical");
-        xAxis = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            initialTime = time;
-        }
+        // refreshes the movement input all the time
+        movementInput = movement.action.ReadValue<Vector2>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        time++;
-        regularMovement();
-        roll();
+        // moves 100 times every second
+        regularMovement(movementInput.x, movementInput.y);
     }
 
-    private void regularMovement()
+    private void regularMovement(float xValue, float yValue)
     {
-        gameObject.transform.position = new Vector3(transform.position.x + (xAxis * playerSpeedNormal), transform.position.y + (yAxis * playerSpeedNormal));
-
+        gameObject.transform.position = new Vector3(
+            transform.position.x + (xValue * playerSpeedReduction), 
+            transform.position.y + (yValue * playerSpeedReduction)
+            );
     }
 
-    private void roll()
+    private void Roll(InputAction.CallbackContext obj)
     {
-        if (time < initialTime + 25) 
-        {
-            playerSpeedNormal = 2;
-        }
-        else
-        {
-            playerSpeedNormal = 1;
-        }
+      // roll code goes here
     }
 
-
-    private void slipperyMovement()
-    {
-        
-        if (yAxis != 0) 
-        {
-            velocityY += yAxis * playerSpeed;
-        }
-        else
-        {
-            if (velocityY < 0)
-            {
-                velocityY += 0.0005F;
-            }
-            if (velocityY > 0)
-            {
-                velocityY -= 0.0005F;
-            }
-        }
-        if (xAxis != 0)
-        {
-            velocityX += xAxis * playerSpeed;
-        }
-        else
-        {
-            if (velocityX < 0)
-            {
-                velocityX += 0.0005F;
-            }
-            if (velocityX > 0)
-            {
-                velocityX -= 0.0005F;
-            }
-        }
-
-        gameObject.transform.position = new Vector3(transform.position.x + velocityX, transform.position.y + velocityY);
-
-    }
 }
