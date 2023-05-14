@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(TMP_Text))]
 public class ConsoleInput : MonoBehaviour
 {
+    [SerializeField] private BattleManager battleManager;
     [SerializeField] private int maxLength;
 
     private TMP_Text textComponent;
@@ -41,6 +42,12 @@ public class ConsoleInput : MonoBehaviour
         if (character == (byte)KeyCode.Backspace && text.Length > 0)
         {
             text = text.Substring(0, text.Length - 1);
+        }
+        // Submit the command if enter is pressed
+        else if (character == (byte)KeyCode.Return)
+        {
+            battleManager.ExecuteCommand(text);
+            text = "";
         }
         // Type pressed character into text component if the font contains the character and the string is not below the max length
         else if (textComponent.font.HasCharacter(character) && text.Length < maxLength) text += character;
