@@ -13,6 +13,8 @@ public class PlayerController3D : MonoBehaviour
     // allows for the input of the movement and camera action references
     [SerializeField] private InputActionReference movement, veiwAdjustment;
 
+    [SerializeField] private Transform camera;
+
     // defines a vector to store the current movement direction
     private Vector3 movementDirection;
 
@@ -52,7 +54,7 @@ public class PlayerController3D : MonoBehaviour
     private void regularMovement(float xValue, float zValue)
     {
         // indentifies the player's movement direction based on where the player is facing
-        movementDirection = body.transform.forward * zValue + body.transform.right * xValue;
+        movementDirection = camera.transform.forward * zValue + camera.transform.right * xValue;
         // moves the player twards the given direction
         body.velocity = movementDirection.normalized * moveSpeed;
     }
@@ -70,7 +72,7 @@ public class PlayerController3D : MonoBehaviour
         );
 
         // rotates the body
-        body.transform.localRotation = xQuat * yQuat;
+        camera.transform.localRotation = xQuat * yQuat;
     }
 
 }
