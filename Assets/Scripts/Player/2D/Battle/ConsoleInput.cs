@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(TMP_Text))]
 public class ConsoleInput : MonoBehaviour
 {
-    [SerializeField] private BattleManager battleManager;
+    [SerializeField] private SpellManager spellManager;
     [SerializeField] private int maxLength;
 
     private TMP_Text textComponent;
@@ -46,7 +46,7 @@ public class ConsoleInput : MonoBehaviour
         // Submit the command if enter is pressed
         else if (character == (byte)KeyCode.Return)
         {
-            battleManager.ExecuteCommand(text);
+            spellManager.ExecuteCommand(text);
             text = "";
         }
         // Type pressed character into text component if the font contains the character and the string is not below the max length

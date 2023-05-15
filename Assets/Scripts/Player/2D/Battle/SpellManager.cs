@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+public class SpellManager : MonoBehaviour
 {
     // List of possible spells
     private List<ISpell> spellList;

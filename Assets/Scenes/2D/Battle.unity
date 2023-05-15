@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 20, y: 0}
+  m_SizeDelta: {x: 910, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &103994181
 MonoBehaviour:
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 988512642}
   - component: {fileID: 988512643}
   m_Layer: 0
-  m_Name: BattleManager
+  m_Name: SpellManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301a45d8840f27c4da2ee9d2c6e0bceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleManager: {fileID: 988512642}
+  spellManager: {fileID: 988512642}
   maxLength: 100
 --- !u!1 &1393461635
 GameObject:
