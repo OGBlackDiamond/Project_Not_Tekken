@@ -5,7 +5,10 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class WASD_Move : MonoBehaviour
 {
-    // reduction value to hinder the player's movement
+    /*
+     * An action reference is created using a feild, it is used to 
+     * reference the specific action, more can be added as needed
+    */
     [SerializeField] private float playerSpeed, rollPlayerSpeed, rollSeconds;
     [SerializeField] private InputActionReference movement, roll;
     [SerializeField] private BoxCollider2D body;
@@ -17,10 +20,6 @@ public class WASD_Move : MonoBehaviour
 
     private bool rolling;
 
-    /*
-     * An action reference is created using a feild, it is used to 
-     * reference the specific action, more can be added as needed
-    */
 
 
     // runs when the object is instantiated and becomes active
@@ -39,8 +38,8 @@ public class WASD_Move : MonoBehaviour
 
     private void Update()
     {
-        // refreshes the movement input all the time
-        movementInput = movement.action.ReadValue<Vector2>();
+        // refreshes the movement input when not rolling
+        movementInput = rolling? movementInput : movement.action.ReadValue<Vector2>();
     }
 
     void FixedUpdate()

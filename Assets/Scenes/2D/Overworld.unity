@@ -317,9 +317,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.18379447
-    y: 0.31829166
-    width: 0.6324111
+    x: 0.8699434
+    y: -0.15511683
+    width: 0.34797734
     height: 0.36261076
   near clip plane: 0.3
   far clip plane: 10000
@@ -406,8 +406,8 @@ MonoBehaviour:
 --- !u!4 &1719705107
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+  m_PrefabInstance: {fileID: 3342059511426113051}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719705105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
