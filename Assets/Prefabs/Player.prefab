@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8245128010659470013}
   - component: {fileID: 285521389711695316}
   - component: {fileID: 95414147253249256}
+  - component: {fileID: 7460604562025946022}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 1426006077338443253}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &285521389711695316
 SpriteRenderer:
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be11654214ec54a4a9aed44b72902b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 1.1
+  playerSpeed: 0.125
   rollPlayerSpeed: 2.5
   rollSeconds: 0.25
   movement: {fileID: -2509821114120957222, guid: e3c2f601fd85b5041813c8d9b4424fd1, type: 3}
@@ -106,6 +107,9 @@ MonoBehaviour:
   slide: {fileID: 0}
 --- !u!1 &6025758515608029714
 GameObject:
+  body: {fileID: 7460604562025946022}
+--- !u!61 &7460604562025946022
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
