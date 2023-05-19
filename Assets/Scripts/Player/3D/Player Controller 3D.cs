@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -8,7 +9,7 @@ using UnityEngine.InputSystem;
 public class PlayerController3D : MonoBehaviour
 {
     // allows the move speed a sensitivity to be changed 
-    [SerializeField] private float moveSpeed, sensitivity;
+    [SerializeField] private float moveSpeed, sensitivity, gravity;
 
     // allows for the input of the movement and camera action references
     [SerializeField] private InputActionReference movement, veiwAdjustment;
@@ -56,7 +57,8 @@ public class PlayerController3D : MonoBehaviour
         // indentifies the player's movement direction based on where the player is facing
         movementDirection = camera.transform.forward * zValue + camera.transform.right * xValue;
         // moves the player twards the given direction
-        body.velocity = movementDirection.normalized * moveSpeed;
+        body.transform.position = body.transform.position + movementDirection.normalized * moveSpeed;
+        body.transform.position = body.transform.position - new Vector3(0, gravity, 0);
     }
 
     private void cameraAdjustment()
@@ -74,5 +76,4 @@ public class PlayerController3D : MonoBehaviour
         // rotates the body
         camera.transform.localRotation = xQuat * yQuat;
     }
-
 }
