@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2916751055389833448}
   - component: {fileID: 4011832631927020178}
   m_Layer: 0
-  m_Name: Hitbox
+  m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
