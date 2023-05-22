@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d543e67f9a331224487259fc29e8b80b
+guid: a06e5bea71e048447a91025146acb32b
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Kongtext
+  - Source Code Pro ExtraLight
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

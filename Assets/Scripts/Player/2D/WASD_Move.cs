@@ -39,7 +39,7 @@ public class WASD_Move : MonoBehaviour
     private void Update()
     {
         // refreshes the movement input when not rolling
-        movementInput = rolling? movementInput : movement.action.ReadValue<Vector2>();
+        movementInput = rolling ? movementInput : movement.action.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
