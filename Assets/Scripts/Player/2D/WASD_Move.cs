@@ -1,21 +1,25 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.Rendering.DebugUI;
 
 public class WASD_Move : MonoBehaviour
 {
-    // reduction value to hinder the player's movement
-    [SerializeField] private float playerSpeed, rollPlayerSpeed, rollSeconds;
-    [SerializeField] private InputActionReference movement, roll, slide;
-
-    private Vector2 movementInput;
-
-    private bool rolling;
-
     /*
      * An action reference is created using a feild, it is used to 
      * reference the specific action, more can be added as needed
     */
+    [SerializeField] private float playerSpeed, rollPlayerSpeed, rollSeconds;
+    [SerializeField] private InputActionReference movement, roll;
+    [SerializeField] private BoxCollider2D body;
+
+    private Vector2 movementInput;
+
+    private Color color = new Color(0, 255, 0);
+
+
+    private bool rolling;
+
 
 
     // runs when the object is instantiated and becomes active
@@ -40,8 +44,16 @@ public class WASD_Move : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (transform.position != body.transform.position)
+        {
+            Debug.Log("Balls");
+        }
         // moves 100 times every second
         regularMovement(movementInput.x, movementInput.y);
+        //Debug.Log(transform.position);
+        checkCollision();
+        //Debug.Log(transform.position);
+
     }
 
     private void regularMovement(float xValue, float yValue)
@@ -64,5 +76,23 @@ public class WASD_Move : MonoBehaviour
     private void stopRoll()
     {
         rolling = false;
+    }
+
+    private void checkCollision()
+    {
+        Collider2D[] collisions = Physics2D.OverlapBoxAll((Vector2)(body.transform.position + body.transform.localScale / 2), body.transform.localScale, 0);
+
+        foreach (Collider2D collision in collisions)
+        {
+            if (collision == body) continue;
+            
+            ColliderDistance2D colliderDistance = collision.Distance(body);
+            //Debug.Log((Vector3)(colliderDistance.pointA - colliderDistance.pointB));
+            if (colliderDistance.isOverlapped)
+            {
+                Debug.DrawLine(transform.position, transform.position + (Vector3)(colliderDistance.pointA - colliderDistance.pointB), color);
+                transform.localPosition += (Vector3)(colliderDistance.pointA - colliderDistance.pointB);
+            }   
+        }
     }
 }

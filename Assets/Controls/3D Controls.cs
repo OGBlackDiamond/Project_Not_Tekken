@@ -44,6 +44,15 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""d8e6748c-f103-4930-9638-0feaaf85ecf1"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -123,6 +132,61 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
                     ""action"": ""roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""cffbdd1e-1080-4576-88ae-bd79f439e9b0"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e3aa2df9-3a89-4821-8628-43d4211b1325"",
+                    ""path"": ""<Mouse>/delta/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""02b4599b-c2ae-4580-9d13-a9170fab5f93"",
+                    ""path"": ""<Mouse>/delta/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""be9499a8-70cf-4cc1-8a35-3f234bee81dc"",
+                    ""path"": ""<Mouse>/delta/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c8d866fc-00fd-4845-b55c-19e9bcd183e8"",
+                    ""path"": ""<Mouse>/delta/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -133,6 +197,7 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
         m_gameplay = asset.FindActionMap("gameplay", throwIfNotFound: true);
         m_gameplay_move = m_gameplay.FindAction("move", throwIfNotFound: true);
         m_gameplay_roll = m_gameplay.FindAction("roll", throwIfNotFound: true);
+        m_gameplay_turn = m_gameplay.FindAction("turn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,12 +261,14 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_gameplay_move;
     private readonly InputAction m_gameplay_roll;
+    private readonly InputAction m_gameplay_turn;
     public struct GameplayActions
     {
         private @_3DControls m_Wrapper;
         public GameplayActions(@_3DControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @move => m_Wrapper.m_gameplay_move;
         public InputAction @roll => m_Wrapper.m_gameplay_roll;
+        public InputAction @turn => m_Wrapper.m_gameplay_turn;
         public InputActionMap Get() { return m_Wrapper.m_gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -217,6 +284,9 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
             @roll.started += instance.OnRoll;
             @roll.performed += instance.OnRoll;
             @roll.canceled += instance.OnRoll;
+            @turn.started += instance.OnTurn;
+            @turn.performed += instance.OnTurn;
+            @turn.canceled += instance.OnTurn;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -227,6 +297,9 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
             @roll.started -= instance.OnRoll;
             @roll.performed -= instance.OnRoll;
             @roll.canceled -= instance.OnRoll;
+            @turn.started -= instance.OnTurn;
+            @turn.performed -= instance.OnTurn;
+            @turn.canceled -= instance.OnTurn;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -248,5 +321,6 @@ public partial class @_3DControls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
+        void OnTurn(InputAction.CallbackContext context);
     }
 }
