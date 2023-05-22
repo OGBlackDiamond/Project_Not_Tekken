@@ -282,7 +282,7 @@ MonoBehaviour:
   m_AssetsPPU: 1
   m_RefResolutionX: 320
   m_RefResolutionY: 180
-  m_CropFrame: 3
+  m_CropFrame: 4
   m_GridSnapping: 2
   m_FilterMode: 0
   m_UpscaleRT: 0
@@ -317,14 +317,14 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.8699434
-    y: -0.15511683
-    width: 0.34797734
-    height: 0.36261076
+    x: 0
+    y: 0.25732532
+    width: 1
+    height: 0.48389366
   near clip plane: 0.3
   far clip plane: 10000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 90
   m_Depth: 0
   m_CullingMask:
@@ -406,8 +406,8 @@ MonoBehaviour:
 --- !u!4 &1719705107
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
-  m_PrefabInstance: {fileID: 3342059511426113051}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719705105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -542,8 +542,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752367616}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.687, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 48.1, y: -49.4, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -557,21 +557,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 95414147253249256, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: playerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95414147253249256, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: rollSeconds
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832588341933812637, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 968538153}
     - target: {fileID: 5436595047252602982, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7460604562025946022, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
-      propertyPath: m_Size.x
-      value: 0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460604562025946022, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
-      propertyPath: m_Size.y
-      value: 0.95
-      objectReference: {fileID: 0}
     - target: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
       propertyPath: m_LocalPosition.x
