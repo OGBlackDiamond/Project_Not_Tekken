@@ -6,15 +6,15 @@ public class Slash : MonoBehaviour, ISpell
 {
     [SerializeField] private int damage;
     public string Command { get; set; }
+    public string Output { get; set; }
 
     public Slash()
     {
         Command = "slash";
     }
 
-
-    public void Cast()
+    public void Cast() 
     {
-        Debug.Log("Slash for " + damage + " damage!");
+        Output = "Slash for " + damage + " damage!";
     }
 }

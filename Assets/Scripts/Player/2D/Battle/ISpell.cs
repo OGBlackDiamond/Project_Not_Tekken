@@ -5,6 +5,7 @@ using UnityEngine;
 public interface ISpell
 {
     string Command { get; }
+    string Output { get; }
 
-    public virtual void Cast() { }
+    public void Cast() { }
 }
