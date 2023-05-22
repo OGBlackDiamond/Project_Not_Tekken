@@ -54,10 +54,21 @@ public class PlayerController3D : MonoBehaviour
 
     private void regularMovement(float xValue, float zValue)
     {
+        float startingYPos = body.transform.position.y;
         // indentifies the player's movement direction based on where the player is facing
-        movementDirection = camera.transform.forward * zValue + camera.transform.right * xValue;
+        movementDirection =
+            camera.transform.forward * zValue + 
+            camera.transform.right * xValue;
         // moves the player twards the given direction
-        body.transform.position = body.transform.position + movementDirection.normalized * moveSpeed;
+        body.transform.position = 
+            body.transform.position + 
+            movementDirection.normalized * moveSpeed;
+        // removes any y axis movement
+        body.transform.position = new Vector3(
+            body.transform.position.x, 
+            startingYPos,
+            body.transform.position.z);
+        // applies gravity
         body.transform.position = body.transform.position - new Vector3(0, gravity, 0);
     }
 
