@@ -204,6 +204,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &552664369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5436595047252602982, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+  m_PrefabInstance: {fileID: 3342059511426113051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &552664370 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7460604562025946022, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+  m_PrefabInstance: {fileID: 3342059511426113051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &552664374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552664369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: e3c2f601fd85b5041813c8d9b4424fd1, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 968538153}
 --- !u!1 &968538150
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,9 +357,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.8699434
-    y: -0.15511683
-    width: 0.34797734
+    x: 0.18379447
+    y: 0.31829166
+    width: 0.6324111
     height: 0.36261076
   near clip plane: 0.3
   far clip plane: 10000
@@ -406,8 +446,8 @@ MonoBehaviour:
 --- !u!4 &1719705107
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
-  m_PrefabInstance: {fileID: 3342059511426113051}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719705105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -557,6 +597,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 95414147253249256, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 552664370}
     - target: {fileID: 5436595047252602982, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
       propertyPath: m_Name
       value: Player
@@ -569,9 +613,25 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.95
       objectReference: {fileID: 0}
+    - target: {fileID: 7460604562025946022, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460604562025946022, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8245128010659470013, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
       propertyPath: m_LocalPosition.x
@@ -614,7 +674,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6025758515608029714, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5436595047252602982, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 552664374}
   m_SourcePrefab: {fileID: 100100000, guid: 9f72f74a29bf531449c46d3394c55e05, type: 3}
