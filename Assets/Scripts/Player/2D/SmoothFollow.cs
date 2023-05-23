@@ -18,9 +18,9 @@ public class SmoothFollow : MonoBehaviour
         //Speed up movement if object is too far from target
         float distance = Vector2.Distance(_offset, targetPosition);
         var smoothTime = distance <= _maxDistance ? _smoothTime : _smoothTime - (distance - _maxDistance) / _distanceMultiplier;
-
+        
         //Smoothly move object towards the target
         _offset = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
-        transform.position = Snapping.Round(_offset);
+        transform.position = _offset;
     }
 }

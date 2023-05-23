@@ -9,6 +9,9 @@ public class WASD_Move : MonoBehaviour
      * An action reference is created using a feild, it is used to 
      * reference the specific action, more can be added as needed
     */
+
+    [SerializeField] private Transform cam;
+
     [SerializeField] private float playerSpeed, rollPlayerSpeed, rollSeconds;
     [SerializeField] private InputActionReference movement, roll;
     [SerializeField] private BoxCollider2D body;
@@ -50,9 +53,10 @@ public class WASD_Move : MonoBehaviour
         }
         // moves 100 times every second
         regularMovement(movementInput.x, movementInput.y);
-        //Debug.Log(transform.position);
+        // check collisions and move the player out of objects
         checkCollision();
-        //Debug.Log(transform.position);
+        // move the camera to follow the player smoothly
+        cam.GetComponent<SmoothFollow>().UpdatePosition(transform);
 
     }
 
